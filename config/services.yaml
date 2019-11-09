@@ -23,5 +23,18 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\Admin\FolderAdmin:
+        arguments: [~, App\Entity\Folder, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Folder }
+
+    App\Admin\PictureAdmin:
+        arguments: [~, App\Entity\Picture, ~]
+        tags:
+            - {name: sonata.admin, manager_type: orm, label: Picture }
+
+#mydatabase:
+    # supported versions: 9.6, 10, 11
+    # 9.3 is also available but not maintained upstream
+#    type: postgresql:11
+#    disk: 1024
